@@ -1,27 +1,23 @@
    #include<bits/stdc++.h>
     using namespace std;
-    void swap(char &a,char &b){char temp=a;a=b;b=temp;}
+     void swap(char &a,char &b){char temp=a;a=b;b=temp;}
     
-    void f(int i,string a,vector<string>&ans,int n,string &osf){
+    void f(int i,string a,vector<string>&ans,int n){
         if(i==n){
-            ans.push_back(osf);
+            ans.push_back(a);
             return;
         }
         for(int j=i;j<n;j++){
             swap(a[i],a[j]);
-            osf+=a[i];
-            f(i+1,a,ans,n,osf);
-            int x=osf.length();
-            x-=1;
-            osf.erase(osf.begin()+x);
+            f(i+1,a,ans,n);
         }
     }
     vector<string>findPermutations(string &nums) {
         vector<string>ans;
-        string osf="";
-        f(0,nums,ans,nums.size(),osf);
+        f(0,nums,ans,nums.size());
         return ans;
     }
+
     int main(){
         string s;
         cin>>s;
