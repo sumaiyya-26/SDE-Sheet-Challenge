@@ -3,9 +3,9 @@ using namespace std;
 void swap(int &a,int &b){int temp=a;a=b;b=temp;}
 int partition (int arr[], int low, int high)
 {
-    int i=-1,j;
+    int i=low-1,j;
     int pivotElement=arr[high];
-    for(j=0;j<high;j++){
+    for(j=low;j<high;j++){
         if(arr[j]<=pivotElement){
             i++;
             swap(arr[i],arr[j]);
