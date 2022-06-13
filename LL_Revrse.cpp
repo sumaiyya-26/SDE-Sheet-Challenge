@@ -25,12 +25,17 @@ void LLprint(Node *head){
     cout<<head->data<<" ";
     LLprint(head->next);
 }
-Node * RecursiveReverse(Node * &head){
+//No need to pass by refernece as actual head pointer to change hi nahi ho rha hai;
+// we are returning the newhead;
+// and not the head
+Node * RecursiveReverse(Node * head){
     if(head->next==NULL)return head;
     Node * HeadAfterReversing=RecursiveReverse(head->next);
     head->next->next=head;
     head->next=NULL;
     return HeadAfterReversing;
+    // return head;  when we return head this means 1(if LL is 1 2 3 4 5) and noe the list is revesed so 5(5 4 3 2 1) is k a next is NULL
+    //so if we return head then print m only 1 print hoga as 1 ke bad NULLL hai.(whther we pass by refence or pass by value ,head return krne se 1 print hoga bs)
 }
 Node * IterativeReverse(Node * &head){
     Node *a=head,*b=NULL,*c=NULL;
@@ -45,8 +50,8 @@ Node * IterativeReverse(Node * &head){
 }
 Node* LLreverse(struct Node * &head){
     if(head==NULL)return head;
-    // return RecursiveReverse(head);
-    return IterativeReverse(head);
+    return RecursiveReverse(head);
+    // return IterativeReverse(head);
 }
 int main(){
     Node * head=NULL;
