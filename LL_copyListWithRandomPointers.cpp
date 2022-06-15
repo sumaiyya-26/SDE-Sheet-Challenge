@@ -65,6 +65,7 @@
                 Ranpos--;
                 while(Ranpos && temp!=NULL){
                     temp=temp->next;
+                    Ranpos--;
                 }
                 head->random=temp;
             }
